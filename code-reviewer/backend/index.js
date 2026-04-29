@@ -19,10 +19,6 @@ app.use(express.json());
 mongoose
   .connect(
     process.env.MONGODB_URI || "mongodb://localhost:27017/code-assistant",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    },
   )
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error:", err));
@@ -45,9 +41,7 @@ app.post("/api/analyze", async (req, res) => {
     } // ✅ yahan close karo
 
     const { code, issue, language } = req.body;
-    const { code, issue, language } = req.body;
 
-    const { code, issue, language } = req.body;
 
 if (!code) {
   return res.status(400).json({ error: "Code is required" });
@@ -67,7 +61,7 @@ if (!process.env.GEMINI_API_KEY) {
   return res.status(500).json({ error: "API key missing" });
 }
 
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-3.1-flash-lite-preview" });
 const analyzePrompt = `
 You are a senior software engineer.
 

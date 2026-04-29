@@ -1,6 +1,6 @@
 const Usage = require('../models/Usage');
 
-const DAILY_LIMIT = 3;
+const DAILY_LIMIT = 3; 
 
 function getToday() {
   return new Date().toISOString().slice(0, 10); // YYYY-MM-DD
